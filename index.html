@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISMT College - International School of Management and Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0056b3; /* A vibrant blue */
+            --secondary-color: #004085; /* Darker blue */
+            --accent-color: #ffc107; /* A bright yellow for highlights */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white-color: #fff;
+            --gray-light: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--white-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            left: 0;
+            bottom: -5px;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?college,students,technology') no-repeat center center/cover;
+            color: var(--white-color);
+            text-align: center;
+            padding: 100px 20px;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background-color: #ffda6a; /* Lighter accent */
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styling */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            background-color: var(--white-color);
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            font-weight: 700;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        #about .content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        #about .text-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #about .text-content h3 {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        #about .text-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        #about .image-gallery {
+            flex: 1;
+            min-width: 300px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        #about .image-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #about .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Programs Section */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .program-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .program-card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card h3 {
+            font-size: 1.7rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .program-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .program-card ul li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .program-card ul li::before {
+            content: '✔️';
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .program-card .btn {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            box-shadow: none;
+        }
+
+        .program-card .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Facilities Section */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .facility-item {
+            background-color: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .facility-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .facility-item i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .facility-item h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .facility-item p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        /* Campuses Section */
+        .campus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .campus-card {
+            background-color: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .campus-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .campus-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .campus-card-content {
+            padding: 25px;
+        }
+
+        .campus-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .campus-card p {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+        }
+
+        .campus-card .address {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 80px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .cta h2 {
+            color: var(--white-color);
+            margin-bottom: 30px;
+        }
+
+        .cta h2::after {
+            background-color: var(--accent-color);
+        }
+
+        .cta p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta .btn {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+        }
+
+        .cta .btn:hover {
+            background-color: #ffda6a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+        }
+
+        footer .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin: 20px;
+        }
+
+        footer .footer-col h4 {
+            font-size: 1.3rem;
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        footer .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 50px;
+            height: 2px;
+            background-color: var(--white-color);
+        }
+
+        footer .footer-col ul {
+            list-style: none;
+        }
+
+        footer .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        footer .footer-col ul li a,
+        footer .footer-col p {
+            color: var(--white-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        footer .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        footer .social-links a {
+            display: inline-block;
+            height: 40px;
+            width: 40px;
+            background-color: rgba(255,255,255,0.2);
+            margin: 0 10px 10px 0;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            color: var(--white-color);
+            transition: all 0.3s ease;
+        }
+
+        footer .social-links a:hover {
+            color: var(--primary-color);
+            background-color: var(--white-color);
+        }
+
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+            }
+
+            nav ul {
+                padding: 10px 0;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            #about .content {
+                flex-direction: column;
+            }
+
+            #about .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+
+            .program-grid, .facilities-grid, .campus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero {
+                height: 60vh;
+                padding: 80px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+
+            footer .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            footer .footer-col {
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            footer .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Font Awesome for Icons */
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="https://via.placeholder.com/40x40?text=ISMT" alt=""> ISMT College
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#campuses">Campuses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Unlock Your Global Future with ISMT College</h1>
+            <p>Globally recognized British Degrees from Pearson BTEC and the University of Sunderland, right here in Nepal.</p>
+            <a href="#programs" class="btn">Explore Programs</a>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>About ISMT College</h2>
+                <div class="content">
+                    <div class="text-content">
+                        <h3>Your Gateway to International Education</h3>
+                        <p>ISMT College (International School of Management and Technology) is dedicated to providing world-class education with a global perspective. We offer prestigious British degrees from Pearson BTEC and the University of Sunderland, ensuring our graduates are equipped with internationally recognized qualifications.</p>
+                        <p>With a strong focus on practical skills and career readiness, ISMT prepares students for success in various professional fields. Our vibrant learning environment, coupled with experienced faculty and cutting-edge resources, makes ISMT the ideal place to achieve your academic and career aspirations.</p>
+                        <a href="#contact" class="btn">Learn More</a>
+                    </div>
+                    <div class="image-gallery">
+                        <img src="classroom.jpg" alt="Classroom">
+                        <img src="library.jpg" alt="Library">
+                        <img src="students.jpg" alt="Students">
+                        <img src="campus view.jpg" alt="Campus View">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programs">
+            <div class="container">
+                <h2>Our Academic Programs</h2>
+                <div class="program-grid">
+                    <div class="program-card">
+                        <img src="IT.png" alt="IT Program">
+                        <div class="program-card-content">
+                            <h3>Information Technology (IT)</h3>
+                            <ul>
+                                <li>Comprehensive IT Curriculum</li>
+                                <li>Hands-on Lab Experience</li>
+                                <li>Industry-relevant Skills</li>
+                                <li>Pearson BTEC & University of Sunderland Degrees</li>
+                            </ul>
+                            <a href="#contact" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <img src="business.png" alt="Business Program">
+                        <div class="program-card-content">
+                            <h3>Business Management</h3>
+                            <ul>
+                                <li>Strategic Business Acumen</li>
+                                <li>Leadership Development</li>
+                                <li>Entrepreneurship Focus</li>
+                                <li>Pearson BTEC & University of Sunderland Degrees</li>
+                            </ul>
+                            <a href="#contact" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <img src="hotel management.png" alt="Hospitality Program">
+                        <div class="program-card-content">
+                            <h3>Hospitality Management</h3>
+                            <ul>
+                                <li>Global Hospitality Practices</li>
+                                <li>Service Excellence Training</li>
+                                <li>Event Management Skills</li>
+                                <li>Pearson BTEC & University of Sunderland Degrees</li>
+                            </ul>
+                            <a href="#contact" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+                    <div class="program-card">
+                        <img src="mba.png" alt="MBA Program">
+                        <div class="program-card-content">
+                            <h3>Master of Business Administration (MBA)</h3>
+                            <ul>
+                                <li>Advanced Business Strategies</li>
+                                <li>Executive Leadership</li>
+                                <li>Global Market Insight</li>
+                                <li>University of Sunderland Degree</li>
+                            </ul>
+                            <a href="#contact" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="facilities">
+            <div class="container">
+                <h2>Modern Facilities & Resources</h2>
+                <div class="facilities-grid">
+                    <div class="facility-item">
+                        <i class="fas fa-snowflake"></i>
+                        <h3>Air-conditioned Classrooms</h3>
+                        <p>Comfortable and conducive learning environments for all students.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h3>Smart Boards</h3>
+                        <p>Interactive learning with cutting-edge smart board technology.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Advanced IT Labs</h3>
+                        <p>State-of-the-art computer labs with the latest software and hardware.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-book-reader"></i>
+                        <h3>Resourceful Library</h3>
+                        <p>Extensive collection of books, journals, and digital resources.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Placement & Internship Cell</h3>
+                        <p>Dedicated support for career enhancement, internships, and job placements.</p>
+                    </div>
+                    <div class="facility-item">
+                        <i class="fas fa-wifi"></i>
+                        <h3>High-Speed Wi-Fi</h3>
+                        <p>Seamless internet access across the campus for research and learning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="campuses">
+            <div class="container">
+                <h2>Our Campuses in Nepal</h2>
+                <div class="campus-grid">
+                    <div class="campus-card">
+                        <img src="ktm.png" alt="Kathmandu Campus">
+                        <div class="campus-card-content">
+                            <h3>Kathmandu Campus</h3>
+                            <p>Our main campus located in the heart of the capital city, offering a dynamic urban learning experience with excellent connectivity and resources.</p>
+                            <p class="address"><i class="fas fa-map-marker-alt"></i> Mid-Baneshwor, Kathmandu, Nepal</p>
+                            <a href="#" class="btn">View Location</a>
+                        </div>
+                    </div>
+                    <div class="campus-card">
+                        <img src="brt.png" alt="Biratnagar Campus">
+                        <div class="campus-card-content">
+                            <h3>Biratnagar Campus</h3>
+                            <p>Providing quality education in Biratnagar, serving students from the eastern region with the same high standards and facilities as our main campus.</p>
+                            <p class="address"><i class="fas fa-map-marker-alt"></i> Biratnagar, Province No. 1, Nepal</p>
+                            <a href="#" class="btn">View Location</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Start Your Journey?</h2>
+                <p>Join ISMT College and become part of a community that fosters innovation, leadership, and global readiness. Your future begins here!</p>
+                <a href="#contact" class="btn">Enquire Now</a>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Kathmandu:</strong> Mid-Baneshwor, Kathmandu, Nepal</p>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Biratnagar:</strong> Biratnagar, Province No. 1, Nepal</p>
+                        <p><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +977-1-4475456 (Kathmandu) | +977-21-460123 (Biratnagar)</p>
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> info@ismt.edu.np</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Send Us a Message</h3>
+                        <form action="#" method="POST">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="google-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.0628670868224!2d85.3375815150616!3d27.71501538278783!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a16a4d7d3d%3A0x6a2b8e3a2b7e1b2!2sISMT%20College!5e0!3m2!1sen!2snp!4v1678912345678!5m2!1sen!2snp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-col">
+                <h4>About ISMT</h4>
+                <p>ISMT College offers globally recognized British degrees in IT, Business, and Hospitality Management, with a commitment to academic excellence and career development.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#facilities">Facilities</a></li>
+                    <li><a href="#campuses">Our Campuses</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                <p><i class="fas fa-phone-alt"></i> +977-1-4475456</p>
+                <p><i class="fas fa-envelope"></i> info@ismt.edu.np</p>
+                
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ISMT College. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
